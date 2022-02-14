@@ -1,4 +1,8 @@
 from flask import Flask # Import Flask Class
+from flask import render_template
+
+import random 
+
 app = Flask(__name__) # Create an Instance
 
 @app.route('/') # Route the Function
