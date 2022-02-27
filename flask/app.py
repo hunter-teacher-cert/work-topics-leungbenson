@@ -45,7 +45,7 @@ def form_demo():
       error = "Wrong Response. Try Again"
       name=""
     else: 
-      error = ""
+      error = "Of Course!  That is the correct response."
       
     return render_template("form_demo.html",error=error, name=name)
 
