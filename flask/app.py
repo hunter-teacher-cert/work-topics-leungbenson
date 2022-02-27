@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, request,session 
 from flask import render_template
 
 import random
 
 app = Flask(__name__)
-
+app.secret_key="something"
 
 # Example of a route that passes
 # data to a template
@@ -29,9 +29,36 @@ def about():
 def image_css():
   return render_template("image_css.html")
   
-app.run(host="0.0.0.0",port=5000,debug=True) # Run the Application (in debug mode)
+@app.route("/form_demo",methods=['GET','POST'])
+def form_demo():
+  # GET is when we just load the page in our browser
+  # POST is when we click the button 
+  if request.method=="GET":
+    return render_template("form_demo.html")
+  else:
+    # here we clicked the button
+    # so we can check the form data
+    name = request.form['username']
+    response = request.form['response']
+    print(name,response)
+    if response != "Yes":
+      error = "Wrong Response. Try Again"
+      name=""
+    else: 
+      error = ""
+      
+    return render_template("form_demo.html",error=error, name=name)
 
+@app.route("/session_demo")
+def session_demo():
+
+  print(session)
+  if 'count' not in session:
+    session['count'] = 1
+  else:
+    session['count'] = session['count'] + 1
+
+  return render_template('session_demo.html',count = session['count'])
+ 
   
-#@app.route('/') # Route the Function
-#def main(): # Run the function
-#	return 'Hello World'
+app.run(host="0.0.0.0",port=5000,debug=True)

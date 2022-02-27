@@ -1,9 +1,13 @@
-<h1>Sample form</h1>
+<h1>Snowy Survey</h1>
+
+<img src="/static/snowy.jpg">
+
+<link rel="stylesheet" href="/static/style.css">
 
 {% if name != ""%}
 <h1> Welcome {{name}}</h1>
 {% else %}
-<h1>Please log in </h1>
+<h1>Please fill out the form </h1>
 {% endif %}
 
 
@@ -12,8 +16,8 @@
 Enter your name: 
 <input name="username">
 <br>
-Enter password:
-<input name="password">
+Do you like Snowy?:
+<input name="response">
 <button>SUBMIT</button>
 </form>
 
