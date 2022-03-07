@@ -40,12 +40,18 @@ def form_demo():
     # so we can check the form data
     name = request.form['username']
     response = request.form['response']
+    amountNo = 0
+    amountYes = 0 
     print(name,response)
+    print("The number of Yes ", amountYes)
+    print("The number of No ", amountNo)
     if response != "Yes":
       error = "Wrong Response. Try Again"
       name=""
+      amountNo = amountNo + 1
     else: 
       error = "Of Course!  That is the correct response."
+      amountYes = amountYes + 1
       
     return render_template("form_demo.html",error=error, name=name)
 
