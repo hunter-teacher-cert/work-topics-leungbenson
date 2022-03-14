@@ -26,9 +26,44 @@ result_df = sql_query_to_pd(sql_query_string, db_name='default.db')
 result_df
 ```
 
+## SQL Challenge 2
+Write a SQL Query that retrieves the following records: 
+https://drive.google.com/file/d/1hvChuoJ3_IbeP9j93Q2g82hfQSdkfcdr/view?usp=sharing 
+
+Use the allCuts table and the biographical table to retrieve a list of student cuts with outreach information sorted by guidance counselor. Skills Learned: SELECT, LEFT JOIN, nested tables, ORDER BY Hint #1: You will be using a nested query. The inner query retrieves the allCuts table, which will be surrounded by parentheses, and you will be selecting from this table. Use the following syntax:
+
+```sql
+SELECT * FROM ( Enter the full text of your allCuts query here. ) AS allCuts
+```
 
 
+``` sql
+#Practice your asynchronous queries here.
+#Note that you will need to complete the homework assignment first.
+#Please post asynch. queries on the Slack when you are done.
 
+sql_query_string = """
+
+SELECT allCuts.*,b.Parent1Phone,b.Parent2Phone,b.ParentEmail
+FROM ( 
+  SELECT s.*,p.date,p.coursesection, p.attendance,p.teacher,p.period
+  FROM scan AS s
+  INNER JOIN periodAtt as p
+  ON s.studentID=p.studentID AND SUBSTR(s.scantime, 1, instr(s.scantime,' ') - 1)=p.date AND p.attendance = "A"
+  ORDER BY s.last ASC
+
+) AS allCuts
+LEFT JOIN bio AS b
+ON allCuts.studentid = b.studentid
+ORDER BY allCuts.teacher ASC
+
+"""
+ 
+#Exectue the SQL query
+result_df = sql_query_to_pd(sql_query_string, db_name='default.db')
+result_df
+  ```
+  
 
 
 
