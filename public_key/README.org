@@ -1,3 +1,14 @@
-* Last Name:
-* First Name:
+Public Key Encryption
 
+Members: Benson Leung, Marina Moshchenko, and Mamudu Wally
+
+The Homework and Async is under the file homework.pdf
+Also available here:
+https://docs.google.com/document/d/1FD235I7_weh2JbEvBHOe83Jayza1cXfnzgbRtKNd_uQ/copy
+
+The slide deck is under the file Public Key Encryption (TOPICS).pdf
+
+It is also available here:
+https://docs.google.com/presentation/d/159BRrfjtY8JksG_cgWGvBrP6cKEufrNSdurUFUV59PE/edit?usp=sharing
+
+The solution to the homework assignment can be found under solution.md
